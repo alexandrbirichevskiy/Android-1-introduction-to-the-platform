@@ -6,13 +6,84 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp" >
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="#000000"
+            android:text="Красный текст на черном фоне"
+            android:textColor="#FF0000"
+            android:textSize="25dp"
+            android:shadowColor="#FFFFFF"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="15"
+            android:layout_weight="1"/>
+
+
+        <EditText
+            android:id="@+id/plain_text_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="#FFFFFF"
+            android:ellipsize="middle"
+            android:hint="Тут можно что-то написать"
+            android:inputType="textEmailAddress"
+            android:textColorHighlight="#FF0000"
+            android:textColorLink="#FF0000"
+            android:textCursorDrawable="@android:drawable/ic_btn_speak_now" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#000000"
+            android:text="Я кнопка"
+            android:textColor="#FF0000"
+            android:textColorLink="#FDFDFD" />
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:soundEffectsEnabled="true"
+            android:text="Меня можно переключать"
+            android:textColorLink="#FF0000"
+            android:textStyle="bold"
+            android:typeface="monospace" />
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTintMode="add"
+            android:imeOptions="actionDone"
+            android:text="Меня можно выбрать"
+            android:textStyle="italic"
+            android:visibility="visible" />
+
+        <ToggleButton
+            android:id="@+id/toggleButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:disabledAlpha="0.50"
+            android:text="ToggleButton"
+            android:textColorLink="#FF0000" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
