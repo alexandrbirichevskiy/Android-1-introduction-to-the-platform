@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Simple Сalculator</string>
-    <string name="size_button">40sp</string>
+    <dimen name="size_button">40sp</dimen>
 </resources>
