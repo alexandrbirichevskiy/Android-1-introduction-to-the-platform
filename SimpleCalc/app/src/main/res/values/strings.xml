@@ -16,5 +16,4 @@
     <string name="_0">0</string>
     <string name="equally">=</string>
     <string name="plus">+</string>
-    <dimen name="size_button">40sp</dimen>
 </resources>
