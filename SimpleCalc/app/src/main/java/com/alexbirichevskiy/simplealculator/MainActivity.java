@@ -6,9 +6,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    TextView tv;
+    TextView tvInput;
+    TextView tvOutput;
     StringBuilder displayInput;
     Button button0;
     Button button1;
@@ -21,6 +21,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button button8;
     Button button9;
     Button buttonPoint;
+    Button buttonPlus;
+    Button buttonDiv;
+    Button buttonMin;
+    Button buttonMult;
+    Button buttonEqually;
+    Button buttonC;
+    Button buttonDel;
+    Calculations calc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +46,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button8 = findViewById(R.id.button8);
         button9 = findViewById(R.id.button9);
         buttonPoint = findViewById(R.id.button_point);
+        buttonPlus = findViewById(R.id.button_plus);
+        buttonMin = findViewById(R.id.button_min);
+        buttonDiv = findViewById(R.id.button_div);
+        buttonMult = findViewById(R.id.button_multiply);
+        buttonEqually = findViewById(R.id.button_equally);
+        buttonC = findViewById(R.id.button_c);
+        buttonDel = findViewById(R.id.button_del);
 
         button0.setOnClickListener(this);
         button1.setOnClickListener(this);
@@ -50,29 +65,85 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button8.setOnClickListener(this);
         button9.setOnClickListener(this);
         buttonPoint.setOnClickListener(this);
+        buttonPlus.setOnClickListener(this);
+        buttonMin.setOnClickListener(this);
+        buttonDiv.setOnClickListener(this);
+        buttonMult.setOnClickListener(this);
+        buttonEqually.setOnClickListener(this);
+        buttonC.setOnClickListener(this);
+        buttonDel.setOnClickListener(this);
 
-        tv = findViewById(R.id.editText);
+        tvInput = findViewById(R.id.editTextInput);
+        tvOutput = findViewById(R.id.editTextOutput);
+        tvOutput.setText("");
         displayInput = new StringBuilder();
+        calc = new Calculations();
     }
 
     @Override
     public void onClick(View v) {
-        inputDig(v, button0);
-        inputDig(v, button1);
-        inputDig(v, button2);
-        inputDig(v, button3);
-        inputDig(v, button4);
-        inputDig(v, button5);
-        inputDig(v, button6);
-        inputDig(v, button7);
-        inputDig(v, button8);
-        inputDig(v, button9);
-        inputDig(v, buttonPoint);
+        inputSym(v, button0);
+        inputSym(v, button1);
+        inputSym(v, button2);
+        inputSym(v, button3);
+        inputSym(v, button4);
+        inputSym(v, button5);
+        inputSym(v, button6);
+        inputSym(v, button7);
+        inputSym(v, button8);
+        inputSym(v, button9);
+        inputSym(v, buttonPoint);
+        inputSym(v, buttonEqually);
+        inputArithmSym(v, buttonPlus);
+        inputArithmSym(v, buttonMin);
+        inputArithmSym(v, buttonMult);
+        inputArithmSym(v, buttonDiv);
+        calculate(v, buttonEqually);
+        deleteAll(v, buttonC);
+        deleteOneChar(v, buttonDel);
     }
 
-    public void inputDig (View v, Button button) {
+    public void inputSym (View v, Button button) {
         if (v.getId() == button.getId()) {
-            tv.setText(displayInput.append(button.getText()));
+            tvInput.setText(displayInput.append(button.getText()));
+        }
+    }
+
+    public void inputArithmSym (View v, Button button) {
+        if (v.getId() == button.getId()) {
+            if (!tvOutput.getText().toString().equals("")){
+                displayInput.delete(0,displayInput.length()).append(tvOutput.getText());
+                tvInput.setText(displayInput.append(button.getText()));
+            }
+            else {
+                tvInput.setText(displayInput.append(button.getText()));
+            }
+        }
+    }
+
+    public void calculate (View v, Button button) {
+        if (v.getId() == button.getId()) {
+            calc.parseInput(displayInput);
+            tvOutput.setText(calc.getSum());
+            calc.setSum(0.0);
+        }
+    }
+
+    public void deleteOneChar (View v, Button button){
+        if (v.getId() == button.getId()) {
+            if (displayInput.length() != 0) {
+                displayInput.deleteCharAt(displayInput.length() - 1);
+                tvInput.setText(displayInput);
+            }
+        }
+    }
+
+    public void deleteAll (View v, Button button){
+        if (v.getId() == button.getId()) {
+            displayInput.delete(0,displayInput.length());
+            calc.setSum(0.0);
+            tvInput.setText(displayInput);
+            tvOutput.setText("");
         }
     }
 }
