@@ -1,7 +1,10 @@
 package com.alexbirichevskiy.simplealculator;
 
-public class Calculations {
+import java.io.Serializable;
+
+public class Calculations implements Serializable {
     private double sum;
+    private StringBuilder displayInput = new StringBuilder();
 
     public void parseInput(StringBuilder sb){
         StringBuilder q = new StringBuilder(sb).deleteCharAt(sb.length()-1);
@@ -32,4 +35,7 @@ public class Calculations {
         this.sum = sum;
     }
 
+    public StringBuilder getDisplayInput() {
+        return displayInput;
+    }
 }

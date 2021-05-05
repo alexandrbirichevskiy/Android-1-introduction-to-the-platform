@@ -1,5 +1,6 @@
 package com.alexbirichevskiy.simplealculator;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -7,28 +8,29 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    TextView tvInput;
-    TextView tvOutput;
-    StringBuilder displayInput;
-    Button button0;
-    Button button1;
-    Button button2;
-    Button button3;
-    Button button4;
-    Button button5;
-    Button button6;
-    Button button7;
-    Button button8;
-    Button button9;
-    Button buttonPoint;
-    Button buttonPlus;
-    Button buttonDiv;
-    Button buttonMin;
-    Button buttonMult;
-    Button buttonEqually;
-    Button buttonC;
-    Button buttonDel;
-    Calculations calc;
+    private TextView tvInput;
+    private TextView tvOutput;
+//    private StringBuilder displayInput;
+    private Button button0;
+    private Button button1;
+    private Button button2;
+    private Button button3;
+    private Button button4;
+    private Button button5;
+    private Button button6;
+    private Button button7;
+    private Button button8;
+    private Button button9;
+    private Button buttonPoint;
+    private Button buttonPlus;
+    private Button buttonDiv;
+    private Button buttonMin;
+    private Button buttonMult;
+    private Button buttonEqually;
+    private Button buttonC;
+    private Button buttonDel;
+    private Calculations calc;
+    private static final String CALC_PARAM = "EXTRA_CALC";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,9 +78,47 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvInput = findViewById(R.id.editTextInput);
         tvOutput = findViewById(R.id.editTextOutput);
         tvOutput.setText("");
-        displayInput = new StringBuilder();
         calc = new Calculations();
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState){
+        super.onRestoreInstanceState(savedInstanceState);
+        calc = (Calculations) savedInstanceState.getSerializable(CALC_PARAM);
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putSerializable(CALC_PARAM, calc);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
 
     @Override
     public void onClick(View v) {
@@ -105,25 +145,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void inputSym (View v, Button button) {
         if (v.getId() == button.getId()) {
-            tvInput.setText(displayInput.append(button.getText()));
+            tvInput.setText(calc.getDisplayInput().append(button.getText()));
         }
     }
 
     public void inputArithmSym (View v, Button button) {
         if (v.getId() == button.getId()) {
             if (!tvOutput.getText().toString().equals("")){
-                displayInput.delete(0,displayInput.length()).append(tvOutput.getText());
-                tvInput.setText(displayInput.append(button.getText()));
+                calc.getDisplayInput().delete(0,calc.getDisplayInput().length()).append(tvOutput.getText());
+                tvInput.setText(calc.getDisplayInput().append(button.getText()));
+                tvOutput.setText("");
             }
             else {
-                tvInput.setText(displayInput.append(button.getText()));
+                tvInput.setText(calc.getDisplayInput().append(button.getText()));
             }
         }
     }
 
     public void calculate (View v, Button button) {
         if (v.getId() == button.getId()) {
-            calc.parseInput(displayInput);
+            calc.parseInput(calc.getDisplayInput());
             tvOutput.setText(calc.getSum());
             calc.setSum(0.0);
         }
@@ -131,18 +172,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void deleteOneChar (View v, Button button){
         if (v.getId() == button.getId()) {
-            if (displayInput.length() != 0) {
-                displayInput.deleteCharAt(displayInput.length() - 1);
-                tvInput.setText(displayInput);
+            if (calc.getDisplayInput().length() != 0) {
+                calc.getDisplayInput().deleteCharAt(calc.getDisplayInput().length() - 1);
+                tvInput.setText(calc.getDisplayInput());
+                tvOutput.setText("");
             }
         }
     }
 
     public void deleteAll (View v, Button button){
         if (v.getId() == button.getId()) {
-            displayInput.delete(0,displayInput.length());
+            calc.getDisplayInput().delete(0,calc.getDisplayInput().length());
             calc.setSum(0.0);
-            tvInput.setText(displayInput);
+            tvInput.setText(calc.getDisplayInput());
             tvOutput.setText("");
         }
     }
