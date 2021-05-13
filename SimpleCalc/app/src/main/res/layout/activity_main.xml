@@ -42,7 +42,7 @@
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:background="@color/colorButtonC"
-            android:text="@string/_c"
+            android:text="@string/c"
             android:textSize="@dimen/size_button" />
 
         <Button
@@ -51,7 +51,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/colorButton"
-            android:text="@string/_del"
+            android:text="@string/del"
             android:textSize="@dimen/size_button"/>
 
         <Button
@@ -104,7 +104,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/colorButton"
-            android:text="@string/_div"
+            android:text="@string/div"
             android:textSize="@dimen/size_button" />
     </LinearLayout>
 
@@ -187,12 +187,12 @@
             android:textSize="@dimen/size_button"/>
 
         <Button
-            android:id="@+id/button_min"
+            android:id="@+id/button_minus"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/colorButton"
-            android:text="@string/min"
+            android:text="@string/minus"
             android:textSize="@dimen/size_button"/>
 
     </LinearLayout>
