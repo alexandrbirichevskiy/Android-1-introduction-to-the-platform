@@ -1,7 +1,6 @@
 package com.alexbirichevskiy.simplealculator;
 
 import android.widget.Button;
-
 import java.io.Serializable;
 
 public class Calculations implements Serializable {
