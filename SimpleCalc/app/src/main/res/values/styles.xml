@@ -7,4 +7,31 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ButtonDigitStyle" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:textSize">@dimen/size_button</item>
+        <item name="android:textColor">@color/cardview_light_background</item>
+        <item name="android:backgroundTint">@color/colorButton</item>
+    </style>
+
+    <style name="ButtonArithmeticSignsStyle" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:textSize">@dimen/size_button</item>
+        <item name="android:textColor">@color/cardview_light_background</item>
+        <item name="android:backgroundTint">@color/colorButton</item>
+    </style>
+
+    <style name="ButtonEquallyStyle" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:textSize">@dimen/size_button</item>
+        <item name="android:textColor">@color/cardview_light_background</item>
+        <item name="android:backgroundTint">@color/colorButtonEqually</item>
+    </style>
+
+    <style name="ButtonDeleteStyle" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:textSize">@dimen/size_button</item>
+        <item name="android:textColor">@color/cardview_light_background</item>
+        <item name="android:backgroundTint">@color/colorButtonC</item>
+    </style>
 </resources>
