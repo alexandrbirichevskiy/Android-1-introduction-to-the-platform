@@ -3,7 +3,9 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="colorButton">#68E38080</color>
+    <color name="colorBackgroundGradientStart">#FFBAB5</color>
+    <color name="colorBackgroundGradientEnd">#FFFFFF</color>
+    <color name="colorButton">#65FD0000</color>
     <color name="colorButtonEqually">#9A07C800</color>
-    <color name="colorButtonC">#C4420D50</color>
+    <color name="colorButtonC">#63420D50</color>
 </resources>

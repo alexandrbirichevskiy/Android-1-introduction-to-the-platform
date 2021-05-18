@@ -1,13 +1,13 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="ButtonDigitStyle" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <style name="ButtonDigitStyle" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="android:textSize">@dimen/size_button</item>
         <item name="android:textColor">@color/cardview_light_background</item>
@@ -15,7 +15,7 @@
         <item name="cornerRadius">@dimen/size_radius</item>
     </style>
 
-    <style name="ButtonArithmeticSignsStyle" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <style name="ButtonArithmeticSignsStyle" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="android:textSize">@dimen/size_button</item>
         <item name="android:textColor">@color/cardview_light_background</item>
@@ -23,7 +23,7 @@
         <item name="cornerRadius">@dimen/size_radius</item>
     </style>
 
-    <style name="ButtonEquallyStyle" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <style name="ButtonEquallyStyle" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="android:textSize">@dimen/size_button</item>
         <item name="android:textColor">@color/cardview_light_background</item>
@@ -31,7 +31,7 @@
         <item name="cornerRadius">@dimen/size_radius</item>
     </style>
 
-    <style name="ButtonDeleteStyle" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <style name="ButtonDeleteStyle" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="android:textSize">@dimen/size_button</item>
         <item name="android:textColor">@color/cardview_light_background</item>
@@ -39,7 +39,7 @@
         <item name="cornerRadius">@dimen/size_radius</item>
     </style>
 
-    <style name="EditTextStyle" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <style name="EditTextStyle" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="android:textSize">@dimen/size_digit</item>
         <item name="android:textColor">@color/cardview_light_background</item>
