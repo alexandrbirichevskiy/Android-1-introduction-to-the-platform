@@ -13,6 +13,7 @@
         <item name="android:textColor">@color/cardview_light_background</item>
         <item name="android:backgroundTint">@color/colorButton</item>
         <item name="cornerRadius">@dimen/size_radius</item>
+        <item name="android:layout_margin">@dimen/size_margin</item>
     </style>
 
     <style name="ButtonArithmeticSignsStyle" parent="Theme.MaterialComponents.Light.DarkActionBar">
@@ -21,6 +22,7 @@
         <item name="android:textColor">@color/cardview_light_background</item>
         <item name="android:backgroundTint">@color/colorButton</item>
         <item name="cornerRadius">@dimen/size_radius</item>
+        <item name="android:layout_margin">@dimen/size_margin</item>
     </style>
 
     <style name="ButtonEquallyStyle" parent="Theme.MaterialComponents.Light.DarkActionBar">
@@ -29,6 +31,7 @@
         <item name="android:textColor">@color/cardview_light_background</item>
         <item name="android:backgroundTint">@color/colorButtonEqually</item>
         <item name="cornerRadius">@dimen/size_radius</item>
+        <item name="android:layout_margin">@dimen/size_margin</item>
     </style>
 
     <style name="ButtonDeleteStyle" parent="Theme.MaterialComponents.Light.DarkActionBar">
@@ -37,6 +40,7 @@
         <item name="android:textColor">@color/cardview_light_background</item>
         <item name="android:backgroundTint">@color/colorButtonC</item>
         <item name="cornerRadius">@dimen/size_radius</item>
+        <item name="android:layout_margin">@dimen/size_margin</item>
     </style>
 
     <style name="EditTextStyle" parent="Theme.MaterialComponents.Light.DarkActionBar">
@@ -44,5 +48,14 @@
         <item name="android:textSize">@dimen/size_digit</item>
         <item name="android:textColor">@color/cardview_light_background</item>
         <item name="android:gravity">center</item>
+    </style>
+
+    <style name="ActivityBackgroundLight" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:background">@drawable/light_grad</item>
+    </style>
+    <style name="ActivityBackgroundDark" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:background">@drawable/dark_grad</item>
     </style>
 </resources>

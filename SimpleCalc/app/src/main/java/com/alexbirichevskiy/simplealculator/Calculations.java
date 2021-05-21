@@ -3,7 +3,7 @@ package com.alexbirichevskiy.simplealculator;
 import android.widget.Button;
 import java.io.Serializable;
 
-public class Calculations implements Serializable {
+public class Calculations {
     private double sum;
     private Button buttonPlus;
     private Button buttonDiv;
