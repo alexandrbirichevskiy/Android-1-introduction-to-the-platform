@@ -43,11 +43,11 @@
         <item name="android:gravity">center</item>
     </style>
 
-    <style name="ActivityBackgroundLight" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="ActivityBackgroundLight" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="android:background">@drawable/light_grad</item>
     </style>
 
-    <style name="ActivityBackgroundDark" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="ActivityBackgroundDark" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="android:background">@drawable/dark_grad</item>
     </style>
 </resources>

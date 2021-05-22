@@ -10,7 +10,4 @@
     <color name="colorButtonC">#63420D50</color>
     <color name="colorBackgroundGradientStartDark">#010212</color>
     <color name="colorBackgroundGradientEndDark">#232E81</color>
-    <color name="colorButtonDark">#65226B93</color>
-    <color name="colorButtonEquallyDark">#9A042E03</color>
-    <color name="colorButtonCDark">#63420D50</color>
 </resources>
