@@ -41,13 +41,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static final String nameSharedPreference = "THEME";
     private MyTheme myTheme;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(getAppTheme(R.style.ActivityBackgroundLight));
         setContentView(R.layout.activity_main);
-
         myTheme = new MyTheme();
         button0 = findViewById(R.id.button0);
         button1 = findViewById(R.id.button1);
@@ -69,7 +67,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonDel = findViewById(R.id.button_del);
         tvInput = findViewById(R.id.editTextInput);
         tvOutput = findViewById(R.id.editTextOutput);
-
         button0.setOnClickListener(this);
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
@@ -88,7 +85,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonEqually.setOnClickListener(this);
         buttonC.setOnClickListener(this);
         buttonDel.setOnClickListener(this);
-
         tvOutput.setText(textNull);
         calc = new Calculations(buttonPlus, buttonDiv, buttonMinus, buttonMult);
     }
