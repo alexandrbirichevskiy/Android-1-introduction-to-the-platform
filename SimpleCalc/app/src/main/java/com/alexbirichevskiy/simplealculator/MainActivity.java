@@ -2,7 +2,12 @@ package com.alexbirichevskiy.simplealculator;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -29,14 +34,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button buttonC;
     private Button buttonDel;
     private Calculations calc;
-    private String textNull = "";
-    private static final String CALC_PARAM = "EXTRA_CALC";
+    private final String textNull = "";
+    private static final int REQUEST_CODE_SETTING_ACTIVITY = 99;
+    public static String YOUR_THEME = "YOUR_THEME";
+    public static final String appTheme = "APP_THEME";
+    public static final String nameSharedPreference = "THEME";
+    private MyTheme myTheme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(getAppTheme(R.style.ActivityBackgroundLight));
         setContentView(R.layout.activity_main);
-
+        myTheme = new MyTheme();
         button0 = findViewById(R.id.button0);
         button1 = findViewById(R.id.button1);
         button2 = findViewById(R.id.button2);
@@ -55,7 +65,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonEqually = findViewById(R.id.button_equally);
         buttonC = findViewById(R.id.button_c);
         buttonDel = findViewById(R.id.button_del);
-
+        tvInput = findViewById(R.id.editTextInput);
+        tvOutput = findViewById(R.id.editTextOutput);
         button0.setOnClickListener(this);
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
@@ -74,23 +85,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonEqually.setOnClickListener(this);
         buttonC.setOnClickListener(this);
         buttonDel.setOnClickListener(this);
-
-        tvInput = findViewById(R.id.editTextInput);
-        tvOutput = findViewById(R.id.editTextOutput);
         tvOutput.setText(textNull);
         calc = new Calculations(buttonPlus, buttonDiv, buttonMinus, buttonMult);
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.buttonSetting){
+            Intent runSettings = new Intent(MainActivity.this, SettingActivity.class);
+            startActivityForResult(runSettings, REQUEST_CODE_SETTING_ACTIVITY);        }
+        return true;
+    }
+
+    @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState){
         super.onRestoreInstanceState(savedInstanceState);
-        calc = (Calculations) savedInstanceState.getSerializable(CALC_PARAM);
     }
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState){
         super.onSaveInstanceState(outState);
-        outState.putSerializable(CALC_PARAM, calc);
     }
 
     @Override
@@ -161,5 +181,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             tvInput.setText(calc.getDisplayInput());
             tvOutput.setText(textNull);
         }
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode != REQUEST_CODE_SETTING_ACTIVITY) {
+            super.onActivityResult(requestCode, resultCode, data);
+            return;
+        }
+
+        if (resultCode == RESULT_OK){
+            myTheme = data.getParcelableExtra(YOUR_THEME);
+            changeAppTheme(myTheme);
+        }
+    }
+
+    private void changeAppTheme(MyTheme myTheme) {
+        int newTheme = Integer.parseInt(String.valueOf(myTheme));
+        setAppTheme(newTheme);
+    }
+
+    private void setAppTheme(int code){
+        SharedPreferences sharedPreferences = getSharedPreferences(nameSharedPreference, MODE_PRIVATE);
+        sharedPreferences.edit()
+                .putInt(appTheme, code)
+                .apply();
+    }
+
+    private int getAppTheme(int code){
+        return getCodeStyle(code);
+    }
+
+    private int getCodeStyle (int codeStyle){
+        SharedPreferences sharedPreferences = getSharedPreferences(nameSharedPreference, MODE_PRIVATE);
+        return sharedPreferences.getInt(appTheme, codeStyle);
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        recreate();
     }
 }

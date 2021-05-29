@@ -8,4 +8,6 @@
     <color name="colorButton">#65FD0000</color>
     <color name="colorButtonEqually">#9A07C800</color>
     <color name="colorButtonC">#63420D50</color>
+    <color name="colorBackgroundGradientStartDark">#010212</color>
+    <color name="colorBackgroundGradientEndDark">#232E81</color>
 </resources>
